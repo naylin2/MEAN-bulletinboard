@@ -9,10 +9,15 @@ const PostSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  date:  {
-    type: Date,
-    default: Date.now
+  created_user_id: {
+    type: String,
+    ref: "user",
+    autopopulate: true
   },
-})
+},
+{
+  timestamps: true
+}
+)
 
 module.exports = mongoose.model('Posts',PostSchema);

@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/Post')
+const { createPost,getAllPost,updatePost,getSinglePost,deletePost} = require('../controllers/post');
+router.get('/', getAllPost);
+router.get('/:postId', getSinglePost);
+router.patch('/:postId', updatePost);
+router.post('/', createPost);
+router.delete('/:postId', deletePost);
 
-router.get('/',async(req,res) => {
-  try{
-    const posts = await Post.find().limit(5);
-    res.json(posts)
-  }catch(err){
-    res.json({message:err});
-  }
-});
-
-
+module.exports = router;
