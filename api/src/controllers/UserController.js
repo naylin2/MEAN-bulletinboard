@@ -5,15 +5,17 @@ function createUser(req, res){
   var name = req.body.name
   var mail = req.body.mail
   var dob = req.body.dob
+  var password = req.body.password
   const user = new User({
     name: name,
     mail: mail,
-    dob: dob
+    dob: dob,
+    password: password
    });
   user.save(function(err, user){
 
     if(err){
-      res.send({status: 500, message: "Unable to add user!"});
+      res.send({status: 500, message: "Unable to add user!"})
     }
     else {
       res.send({status: 200, message: "Successful!", userDetail: user});
@@ -99,7 +101,7 @@ function deleteUser(req, res) {
 function updateUser(req, res) {
   const id = req.params.id;
   const updateObject = req.body;
-  User.update({ _id:id }, { $set:updateObject })
+  User.updateOne({ _id:id }, { $set:updateObject })
     .exec()
     .then(() => {
       res.status(200).json({
