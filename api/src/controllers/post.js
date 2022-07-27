@@ -3,9 +3,17 @@ const Post = require('../models/Post');
 //get all post
 async function getAllPost(req,res){
   try{
-    const posts = await Post.find().limit(5);
-    res.json(posts)
-  }catch(err){
+      let keyword = req.body.keyword;
+      if(keyword != "" )
+      {
+        const foundPosts = await Post.find({$or:[{title: keyword}, {description:keyword}]});
+        res.json(foundPosts)
+      }
+      else{
+        const posts = await Post.find().limit(5);
+        res.json(posts)
+      }
+  }catch (err){
     res.json({message:err});
   }
 }
@@ -25,16 +33,6 @@ async function createPost(req, res){
     res.json({message: err});
   }
 };
-//find post
-// async function findPost(req,res){
-//   try{
-//     let condition = req.params.condition;
-//     const posts = await Post.find({$or:[{title: condition}, {description:condition}]});
-//     res.json({ data: posts, status: 1 });
-//   }catch(err){
-//     res.json({message:err});
-//   }
-// }
 //get single post
 async function getSinglePost(req,res){
   try{
