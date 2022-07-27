@@ -15,6 +15,7 @@ import { UserViewComponent } from './user/user-view/user-view.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { FooterComponent } from './components/footer/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HomeComponent } from './components/home/home.component';
     UserViewComponent,
     UserEditComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
