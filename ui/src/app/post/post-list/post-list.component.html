@@ -14,11 +14,11 @@
     <tbody>
       <tr  *ngFor="let post of postList; let count = index">
         <td>{{count+1}}</td>
-        <td><a [routerLink]="post._id">{{post.title}}</a></td>
+        <td><a [routerLink]="post.id">{{post.title}}</a></td>
         <td>{{post.author}}</td>
         <td>
-          <a [routerLink]="[post._id, 'edit']" class="btn btn-secondary d-inline-block mr-2">Edit</a>
-          <button class="btn" (click)="deletePost(post._id)">Delete</button>
+          <a [routerLink]="[post.id, 'edit']" class="btn btn-secondary d-inline-block mr-2">Edit</a>
+          <button class="btn" (click)="deletePost(post.id)">Delete</button>
         </td>
       </tr>
     </tbody>
