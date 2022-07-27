@@ -1,5 +1,4 @@
 const Post = require('../models/Post');
-const json2csv = require('json2csv');
 
 //get all post
 async function getAllPost(req,res){
@@ -66,17 +65,4 @@ async function deletePost(req,res) {
   }
 }
 
-//export csv
-async function downloadCsv(req,res) {
-  try{
-    const posts = await Post.find().limit(5);
-    var data = json2csv.parse({ data: posts});
-    res.attachment('filename.csv');
-    res.status(200).send(data);
-    console.log(data);
-  }catch(err){
-    res.json({message:err});
-  }
-}
-
-module.exports = {getAllPost,updatePost,createPost,getSinglePost,deletePost,downloadCsv}
+module.exports = {getAllPost,updatePost,createPost,getSinglePost,deletePost}
