@@ -14,6 +14,7 @@ var authRouter = require("./routes/auth");
 var secureRouter = require("./routes/secure-routes");
 
 var app = express();
+require('./config/passport');
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

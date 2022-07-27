@@ -1,4 +1,5 @@
 const passport = require("passport");
+const { createUser } = require("../controllers/UserController");
 const localStrategy = require("passport-local").Strategy;
 const UserModel = require("../models/User");
 
@@ -11,7 +12,7 @@ passport.use(
     },
     async (email, password, done) => {
       try {
-        const user = await UserModel.create({ email, password });
+        const user = await createUser;
 
         return done(null, user);
       } catch (error) {
@@ -45,25 +46,6 @@ passport.use(
         return done(null, user, { message: "Logged in successfully" });
       } catch (error) {
         return done(error);
-      }
-    }
-  )
-);
-
-const JWTstrategy = require("passport-jwt").Strategy;
-const ExtractJWT = require("passport-jwt").ExtractJwt;
-
-passport.use(
-  new JWTstrategy(
-    {
-      secretOrKey: "TOP_SECRET",
-      jwtFromRequest: ExtractJWT.fromUrlQueryParameter("secret_token"),
-    },
-    async (token, done) => {
-      try {
-        return done(null, token.user);
-      } catch (error) {
-        done(error);
       }
     }
   )
