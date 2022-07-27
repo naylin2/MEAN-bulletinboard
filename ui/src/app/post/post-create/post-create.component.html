@@ -1,0 +1,29 @@
+<div class="post-new">
+  <form [formGroup]="addForm" (ngSubmit)="createPost()">
+    <div class="row form-group">
+      <div class="col-2">
+        <label for="title">Title</label>
+      </div>
+       <div class="col-10">
+        <input type="text" name="title" id="title" class="form-control" formControlName="title">
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-2">
+        <label for="body">Body</label>
+      </div>
+      <div class="col-10">
+        <textarea name="body" id="body" class="form-control" cols="30" rows="10" formControlName="body"></textarea>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-2">
+        <label for="author">Author</label>
+      </div>
+      <div class="col-10">
+        <input type="text" name="author" id="author" class="form-control" formControlName="author">
+      </div>
+    </div>
+    <button class="btn" type="submit">Create</button>
+  </form>
+</div>

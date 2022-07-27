@@ -1,0 +1,21 @@
+<div *ngIf="user" class="user-view">
+  <h3 class="text-center">{{user.name}}</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Mail</th>
+        <th scope="col">Date Of Birth</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a>{{user.name}}</a>
+        </td>
+        <td>{{user.mail}}</td>
+        <td>{{user.dob}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

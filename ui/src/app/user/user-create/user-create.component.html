@@ -1,0 +1,30 @@
+<div class="user-create">
+  <form [formGroup]="createForm" (ngSubmit)="createUser()">
+    <div class="row form-group">
+      <div class="col-2">
+        <label for="name">Name</label>
+      </div>
+       <div class="col-10">
+        <input type="text" name="name" id="name" class="form-control" formControlName="name">
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-2">
+        <label for="mail">Mail</label>
+      </div>
+      <div class="col-10">
+        <input type="text" name="mail" id="mail" class="form-control" formControlName="mail">
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-2">
+        <label for="dob">Date Of Birth</label>
+      </div>
+      <div class="col-10">
+        <input type="text" name="dob" id="dob" class="form-control" formControlName="dob">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-secondary">Create</button>
+  </form>
+</div>
+

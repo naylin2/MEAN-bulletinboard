@@ -1,0 +1,28 @@
+<div class="user-table">
+  <a routerLink="new" class="btn btn-secondary">New User</a>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Mail</th>
+        <th scope="col">Date Of Path</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td>
+          <a [routerLink]="user.id">{{user.name}}</a>
+        </td>
+        <td>{{user.mail}}</td>
+        <td>{{user.dob}}</td>
+        <td>
+          <a [routerLink]="[user.id, 'edit']" class="btn btn-secondary d-inline-block mr-2">Edit</a>
+          <a (click)="deleteUser(user.id)" class="btn">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
