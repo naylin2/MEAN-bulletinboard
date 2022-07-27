@@ -29,22 +29,12 @@ export class PostService {
 
   addPost(data: any) {
     let url = 'http://localhost:3000/posts';
-    this.httpClient.post(url, data).subscribe({
-      next: (v) => console.log(v),
-      error: (e) => console.error(e),
-      complete: () => console.info('complete')
-    })
+    return this.httpClient.post(url, data);
   }
 
   deletePost(id: number) {
     let url = 'http://localhost:3000/posts/'+id;
-    return this.httpClient.delete(url).subscribe({
-      next: (v) => console.log(v),
-      error: (e) => console.error(e),
-      complete: () => {
-        return this.getPosts();
-      }
-    })
+    return this.httpClient.delete(url);
   }
 
 }

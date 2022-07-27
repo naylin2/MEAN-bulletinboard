@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-post-list',
@@ -11,7 +12,8 @@ export class PostListComponent implements OnInit {
   postList: any;
 
   constructor(private postService: PostService,
-    private router: Router) { }
+    private router: Router,
+    private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.getPostList();
@@ -24,8 +26,11 @@ export class PostListComponent implements OnInit {
   }
 
   deletePost(id: number) {
-    this.postService.deletePost(id);
-    this.getPostList();
+    this.postService.deletePost(id).subscribe({
+      complete: () => {
+        this.getPostList();
+      }
+    });
   }
 
 }

@@ -1,6 +1,8 @@
 <div class="post-table">
-    <a routerLink="new" class="btn btn-secondary mb-10">New Post</a>
-  <table class="table">
+  <div class="mb-10 d-block">
+    <a routerLink="new" class="btn btn-secondary my-10">New Post</a>
+  </div>
+  <table class="table table-hover">
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -15,7 +17,7 @@
         <td><a [routerLink]="post.id">{{post.title}}</a></td>
         <td>{{post.author}}</td>
         <td>
-          <a [routerLink]="[post.id, 'edit']" class="btn btn-primary d-inline-block mr-2">edit</a>
+          <a [routerLink]="[post.id, 'edit']" class="btn btn-secondary d-inline-block mr-2">edit</a>
           <button class="btn" (click)="deletePost(post.id)">Delete</button>
         </td>
       </tr>
