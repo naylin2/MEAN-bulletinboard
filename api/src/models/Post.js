@@ -1,13 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const PostSchema = mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   body:  {
     type: String,
-    required: true
+    required: true,
   },
   created_user_id: {
     type: String,
@@ -20,4 +20,4 @@ const PostSchema = mongoose.Schema({
 }
 )
 
-module.exports = mongoose.model('Posts',PostSchema);
+module.exports = mongoose.model("Posts", PostSchema);
