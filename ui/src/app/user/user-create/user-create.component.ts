@@ -19,7 +19,8 @@ export class UserCreateComponent implements OnInit {
   createForm: any = this.formBuilder.group({
     name: '',
     mail: '',
-    dob: ''
+    dob: '',
+    password: ''
    });
 
   ngOnInit(): void {

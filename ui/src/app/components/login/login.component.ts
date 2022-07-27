@@ -13,11 +13,22 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder
   ) { }
+  loginForm: any;
+  err: string= ""
 
   ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      username: "",
+      password: ""
+    })
   }
 
-  pass() {
-    this.router.navigateByUrl('home')
+  handleLogin() {
+    let username = this.loginForm.value.username;
+    let password = this.loginForm.value.password;
+    if(username == "" && password == "") this.err = "Username and Password can't be empty!"
+    else if(username == "") this.err = "Username can't be empty!"
+    else if(password == "") this.err= "Password can't be empty!"
+    else this.err=""
   }
 }
