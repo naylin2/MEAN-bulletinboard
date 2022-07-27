@@ -1,16 +1,17 @@
 const Post = require('../models/Post');
+const json2csv = require('json2csv');
 
 //get all post
 async function getAllPost(req,res){
   try{
       let keyword = req.body.keyword;
-      if(keyword != "" )
+      if( keyword != undefined  )
       {
-        const foundPosts = await Post.find({$or:[{title: keyword}, {description:keyword}]});
+        const foundPosts = await Post.find({$or:[{title: keyword}, {body:keyword}]});
         res.json(foundPosts)
       }
       else{
-        const posts = await Post.find().limit(5);
+        const posts = await Post.find();
         res.json(posts)
       }
   }catch (err){
@@ -22,7 +23,7 @@ async function getAllPost(req,res){
 async function createPost(req, res){
   const post = new Post({
     title: req.body.title,
-    description: req.body.description,
+    body: req.body.body,
     created_user_id: req.body.created_user_id
   });
   try {
@@ -47,7 +48,7 @@ async function getSinglePost(req,res){
 async function updatePost(req,res){
   try{
     const postId = req.params.postId;
-    const updatedPost = await Post.updateOne({_id: postId} , {$set: {title: req.body.title}});
+    const updatedPost = await Post.updateOne({_id: postId} , {$set: {title: req.body.title, body: req.body.body}});
     res.json(updatedPost)
   }catch(err){
     res.json({message:err});
@@ -65,4 +66,17 @@ async function deletePost(req,res) {
   }
 }
 
-module.exports = {getAllPost,updatePost,createPost,getSinglePost,deletePost}
+//export csv
+async function downloadCsv(req,res) {
+  try{
+    const posts = await Post.find().limit(5);
+    var data = json2csv.parse({ data: posts});
+    res.attachment('filename.csv');
+    res.status(200).send(data);
+    console.log(data);
+  }catch(err){
+    res.json({message:err});
+  }
+}
+
+module.exports = {getAllPost,updatePost,createPost,getSinglePost,deletePost,downloadCsv}

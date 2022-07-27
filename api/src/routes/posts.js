@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { createPost,getAllPost,updatePost,getSinglePost,deletePost} = require('../controllers/post');
+const { createPost,getAllPost,updatePost,getSinglePost,deletePost, downloadCsv} = require('../controllers/post');
 router.get('/', getAllPost);
+router.get('/download', downloadCsv);
 router.get('/:postId', getSinglePost);
-router.patch('/:postId', updatePost);
+router.put('/:postId', updatePost);
 router.post('/', createPost);
 router.delete('/:postId', deletePost);
 
