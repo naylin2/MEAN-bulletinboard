@@ -18,19 +18,25 @@
       "author": "Nay Nay",
       "id": 3
     }
-    ],
+  ],
   "users": [
     {
       "name": "kyawt kyawt",
       "mail": "kyawtkyawt@gmail.com",
-      "dob": "21-5-2001",
+      "dob": "2022-07-01",
       "id": 1
     },
     {
       "name": "Hay Hay",
       "mail": "hayhay@gmail.com",
-      "dob": "21-6-2001",
+      "dob": "2022-07-02",
       "id": 2
+    },
+    {
+      "name": "Nay Lin Htoo",
+      "mail": "dasdf",
+      "dob": "2022-07-16",
+      "id": 3
     }
   ]
 }
