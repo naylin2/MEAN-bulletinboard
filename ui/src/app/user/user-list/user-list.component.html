@@ -14,13 +14,13 @@
       <tr  *ngFor="let user of users; let count=index">
         <td>{{count+1}}</td>
         <td>
-          <a [routerLink]="user.id">{{user.name}}</a>
+          <a [routerLink]="user._id">{{user.name}}</a>
         </td>
         <td>{{user.mail}}</td>
         <td>{{user.dob}}</td>
         <td>
-          <a [routerLink]="[user.id, 'edit']" class="btn btn-secondary d-inline-block mr-2">Edit</a>
-          <a (click)="deleteUser(user.id)" class="btn">Delete</a>
+          <a [routerLink]="[user._id, 'edit']" class="btn btn-secondary d-inline-block mr-2">Edit</a>
+          <a (click)="deleteUser(user._id)" class="btn">Delete</a>
         </td>
       </tr>
     </tbody>

@@ -12,18 +12,20 @@ export class UserViewComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) { }
   user!: any;
+  paramsId!: number;
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(data => {
+      this.paramsId = data['uid'];
+    })
     this.getUser()
   }
 
   getUser() {
-    const params = this.route.snapshot.paramMap;
-    const paramsId = Number(params.get('uid'));
-    this.userService.getUser(paramsId).subscribe(
+    this.userService.getUser(this.paramsId).subscribe(
       data => this.user=data
     )
   }
