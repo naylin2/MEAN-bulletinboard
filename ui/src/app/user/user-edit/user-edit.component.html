@@ -1,31 +1,16 @@
-<form [formGroup]="editForm" (ngSubmit)="updateUser()" class="container">
-  <div class="row form-group mt-2">
-    <div class="col-2">
-      <label for="name">Name</label>
+<div class="user-edit">
+  <h2>Edit User</h2>
+  <form [formGroup]="editForm" (ngSubmit)="updateUser()">
+    <div class="row form-group">
+      <input type="text" placeholder="Name" name="name" id="name" class="form-control" formControlName="name">
     </div>
-     <div class="col-10">
-      <input type="text" name="name" id="name" class="form-control" formControlName="name">
+    <div class="row form-group">
+      <input type="text" placeholder="Mail" name="mail" id="mail" class="form-control" formControlName="mail">
     </div>
-  </div>
-  <div class="row form-group mt-2">
-    <div class="col-2">
-      <label for="mail">Mail</label>
+    <div class="row form-group">
+      <input type="date" placeholder="Date of birth" name="dob" id="dob" class="form-control" formControlName="dob">
     </div>
-    <div class="col-10">
-      <input type="text" name="mail" id="mail" class="form-control" formControlName="mail">
-    </div>
-  </div>
-  <div class="row form-group mt-2">
-    <div class="col-2">
-      <label for="dob">Date Of Birth</label>
-    </div>
-    <div class="col-10">
-      <input type="text" name="dob" id="dob" class="form-control" formControlName="dob">
-    </div>
-  </div>
-  <div class="row form-group mt-2">
-    <div class="col-10 offset-2">
-      <button type="submit" class="btn btn-primary">update</button>
-    </div>
-  </div>
-</form>
+    <button type="submit" class="btn button">Update</button>
+  </form>
+</div>
+

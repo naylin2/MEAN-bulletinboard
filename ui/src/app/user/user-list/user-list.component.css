@@ -5,3 +5,7 @@
 .user-table .table {
   margin-top: 20px;
 }
+
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+}

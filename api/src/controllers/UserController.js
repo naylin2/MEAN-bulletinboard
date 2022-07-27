@@ -16,6 +16,7 @@ function createUser(req, res){
 
     if(err){
       res.send({status: 500, message: "Unable to add user!"})
+      console.log(err)
     }
     else {
       res.send({status: 200, message: "Successful!", userDetail: user});
