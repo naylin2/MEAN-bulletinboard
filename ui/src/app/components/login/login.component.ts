@@ -18,16 +18,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: "",
+      mail: "",
       password: ""
     })
   }
 
   handleLogin() {
-    let username = this.loginForm.value.username;
+    let mail = this.loginForm.value.mail;
     let password = this.loginForm.value.password;
-    if(username == "" && password == "") this.err = "Username and Password can't be empty!"
-    else if(username == "") this.err = "Username can't be empty!"
+    if(mail == "" && password == "") this.err = "mail and Password can't be empty!"
+    else if(mail == "") this.err = "mail can't be empty!"
     else if(password == "") this.err= "Password can't be empty!"
     else this.err=""
   }
