@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = require("../models/User");
+const bcrypt = require("bcrypt")
 
 function createUser(req, res){
   var name = req.body.name
@@ -16,7 +17,6 @@ function createUser(req, res){
 
     if(err){
       res.send({status: 500, message: "Unable to add user!"})
-      console.log(err)
     }
     else {
       res.send({status: 200, message: "Successful!", userDetail: user});
@@ -118,5 +118,23 @@ function updateUser(req, res) {
       });
     });
 }
+async function authenticate(req, res, next) {
+  const user = await User.find({mail: req.body.mail});
+  if (user != "") {
+    const { password } = user[0];
+    bcrypt.compare(req.body.password, password, function(err, result) {
+      if(result == true){
+        res.json(user);
+      }
+      else {
+        res.json({ message: "Username or password is incorrect"});
+      }
+    });
+  }
+  else {
+    res.json({ message: "User account with " + req.body.mail + " doesn't exist"});
+  }
+}
 
-module.exports = { createUser, getAllUser, getUser, deleteUser, updateUser };
+
+module.exports = { createUser, getAllUser, getUser, deleteUser, updateUser,authenticate };
