@@ -17,6 +17,9 @@ export class PostListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPostList();
+    let myamya = localStorage.getItem("user");
+    console.log(myamya);
+
   }
 
   getPostList() {
