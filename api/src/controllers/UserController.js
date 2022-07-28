@@ -35,22 +35,6 @@ async function getAllUser(req,res){
   }
 }
 
-// function getAllUser(req, res, next) {
-
-//   User.find(function(err, userListResponse){
-
-//     if(err){
-//       res.send({status: 500, message: "Unable to find users!"});
-//     }
-//     else {
-//       const length = userListResponse.length;
-//       res.send({status: 200, recordCount: length, results: userListResponse});
-//     }
-
-//   });
-
-// }
-
 /* GET user detail. */
 async function getUser(req,res){
   try{
@@ -72,32 +56,6 @@ function deleteUser(req, res) {
     res.json({ message: "Successfully deleted"});
   })
 }
-
-// function updateUser(req, res, next) {
-
-//   const userId = req.body.userId;
-
-//   let name =  req.body.name;
-//   let mail =  req.body.mail;
-//   let dob =  req.body.dob;
-
-//   let newUserObj = {
-//     name: name,
-//     mail: mail,
-//     dob: dob
-//   };
-//   userModel.findByIdAndUpdate(userId, newUserObj, function(err, userResponse){
-
-//     if(err){
-//       res.send({status: 500, message: "Unable to update user!"});
-//     }
-//     else {
-//       res.send({status: 200, message: 'User Updated!', results: newUserObj});
-//     }
-
-//   });
-
-// }
 
 function updateUser(req, res) {
   const id = req.params.id;
@@ -137,4 +95,4 @@ async function authenticate(req, res, next) {
 }
 
 
-module.exports = { createUser, getAllUser, getUser, deleteUser, updateUser,authenticate };
+module.exports = { createUser, getAllUser, getUser, deleteUser, updateUser, authenticate };
