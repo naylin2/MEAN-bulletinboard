@@ -14,12 +14,11 @@ export class PostListComponent implements OnInit {
   constructor(private postService: PostService,
     private router: Router,
     private httpClient: HttpClient) { }
+  user: any;
 
   ngOnInit(): void {
     this.getPostList();
-    let myamya = localStorage.getItem("user");
-    console.log(myamya);
-
+    this.user = localStorage.getItem("user");
   }
 
   getPostList() {
