@@ -1,10 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav *ngIf="isLoggedIn" class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand font-italic" href="#">KMNS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div *ngIf="isLoggedIn">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
@@ -14,15 +13,13 @@
         <a class="nav-link" routerLink="users">Users</a>
       </li>
     </ul>
-    <h3>{{user.name}}</h3>
-    <div class="text-align-right">
+    <div class="my-2 my-lg-0">
+      <span class="my-lg-0 mr-4">{{user.name}}</span>
       <button class="btn btn-outline-secondary" (click)="logout()">Logout</button>
     </div>
   </div>
-  </div>
-  <div *ngIf="!isLoggedIn">
-    <div class="text-align-right">
-      <a routerLink="login" class="btn btn-outline-secondary">Login</a>
-    </div>
-  </div>
+</nav>
+<nav *ngIf="!isLoggedIn" class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand font-italic" href="#">KMNS</a>
+  <a routerLink="login" class="btn btn-outline-secondary my-2 my-sm-0">Login</a>
 </nav>

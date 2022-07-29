@@ -9,6 +9,10 @@ const PostSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  author: {
+    type: String,
+    required: true,
+  },
   created_user_id: {
     type: String,
     ref: "user",

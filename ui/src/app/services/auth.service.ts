@@ -8,7 +8,8 @@ export class AuthService {
   user: any;
   isLoggedIn: boolean = false;
   constructor() {
-    this.user = localStorage.getItem("user");
+    let userString = localStorage.getItem("user")
+    if (userString) this.user= JSON.parse(userString)[0];
     if(this.user) this.isLoggedIn = true;
     else this.isLoggedIn = false;
   }

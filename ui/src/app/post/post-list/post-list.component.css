@@ -10,3 +10,9 @@ table {
 a, a:hover, a:focus, a:active {
   text-decoration: none;
 }
+
+.not-loggedin {
+  width: 50%;
+  margin: 50px auto;
+  text-align: center;
+}
