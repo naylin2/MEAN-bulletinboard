@@ -17,13 +17,18 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
 
   ngOnInit(): void {
-    let userString = localStorage.getItem("user")
-    if (userString) this.user= JSON.parse(userString)[0];
+    this.setLocal();
     this.router.events.subscribe(event => {
       if (event.constructor.name === "NavigationEnd") {
+        this.setLocal();
         this.isLoggedIn = this.authService.isLoggedIn;
       }
     })
+  }
+
+  setLocal() {
+    let userString = localStorage.getItem("user")
+    if (userString) this.user= JSON.parse(userString)[0];
   }
 
   logout(){
