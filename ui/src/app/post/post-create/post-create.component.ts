@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { PostService } from 'src/app/services/post.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-post-create',
@@ -13,7 +14,8 @@ export class PostCreateComponent implements OnInit {
   constructor(
     private postService: PostService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   addForm: any = this.formBuilder.group({
@@ -27,7 +29,8 @@ export class PostCreateComponent implements OnInit {
     this.addForm = this.formBuilder.group({
       title: '',
       body: '',
-      author: ''
+      author: this.authService.user.name,
+      created_user_id: this.authService.user._id
     })
   }
 

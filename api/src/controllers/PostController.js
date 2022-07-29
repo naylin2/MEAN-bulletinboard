@@ -23,6 +23,7 @@ async function createPost(req, res){
   const post = new Post({
     title: req.body.title,
     body: req.body.body,
+    author: req.body.author,
     created_user_id: req.body.created_user_id
   });
   try {

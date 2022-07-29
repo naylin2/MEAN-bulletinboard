@@ -16,12 +16,11 @@ export class PostEditComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router
   ) { }
-  user: any;
+  post: any;
   postId!: number;
   editForm: any = this.formBuilder.group({
     title: '',
-    body: '',
-    author: ''
+    body: ''
   });
 
   ngOnInit(): void {
@@ -33,11 +32,10 @@ export class PostEditComponent implements OnInit {
   assignPost() {
     if(this.postId){
       this.postService.viewPost(this.postId).subscribe(data => {
-        this.user = data;
+        this.post = data;
         this.editForm = this.formBuilder.group({
-          title: this.user.title,
-          body: this.user.body,
-          author: this.user.author
+          title: this.post.title,
+          body: this.post.body
         })
       });
       }

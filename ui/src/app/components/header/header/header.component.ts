@@ -17,9 +17,8 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
 
   ngOnInit(): void {
-    this.user = localStorage.getItem("user")
-    console.log(this.user);
-
+    let userString = localStorage.getItem("user")
+    if (userString) this.user= JSON.parse(userString)[0];
     this.router.events.subscribe(event => {
       if (event.constructor.name === "NavigationEnd") {
         this.isLoggedIn = this.authService.isLoggedIn;

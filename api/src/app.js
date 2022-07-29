@@ -6,7 +6,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var cors = require('cors');
 
-mongoose.connect("mongodb://localhost/bulletinboard");
+mongoose.connect("mongodb+srv://root:root@cluster0.sk0sx7f.mongodb.net/test");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var postsRouter = require("./routes/posts");
