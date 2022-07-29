@@ -38,12 +38,18 @@ export class LoginComponent implements OnInit {
       let url = "http://localhost:3000/users/login";
       this.http.post(url, this.loginForm.value).subscribe({
         next: (data) => {
+          if(data.hasOwnProperty("message")) this.err = JSON.parse(JSON.stringify(data)).message;
           let user = JSON.stringify(data);
           localStorage.setItem("user", user);
           this.authService.isLoggedIn = true;
         },
+        error: (e) => {
+          this.err = e;
+          console.log(e);
+        },
         complete: () => {
-          this.router.navigateByUrl('posts');
+          if(this.err) this.router.navigateByUrl('login');
+          else this.router.navigateByUrl('posts');
         }
       })
     }
