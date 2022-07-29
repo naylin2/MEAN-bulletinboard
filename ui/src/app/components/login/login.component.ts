@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
   handleLogin() {
     let mail = this.loginForm.value.mail;
     let password = this.loginForm.value.password;
-    if(mail == "" && password == "") this.err = "mail and Password can't be empty!"
-    else if(mail == "") this.err = "mail can't be empty!"
+    if(mail == "" && password == "") this.err = "Input fields can't be empty!"
+    else if(mail == "") this.err = "Email can't be empty!"
     else if(password == "") this.err= "Password can't be empty!"
     else {
       let url = "http://localhost:3000/users/login";
@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
         next: (data) => {
           if(data.hasOwnProperty("message")) this.err = JSON.parse(JSON.stringify(data)).message;
           else {
+            // if err doesn't exist initialize with blank string
             this.err = ""
             let user = JSON.stringify(data);
             localStorage.setItem("user", user);
@@ -47,8 +48,7 @@ export class LoginComponent implements OnInit {
           }
         },
         error: (e) => {
-          // this.err = e;
-          console.log(e);
+          this.router.navigateByUrl('login')
         },
         complete: () => {
           if(this.err) this.router.navigateByUrl('login');

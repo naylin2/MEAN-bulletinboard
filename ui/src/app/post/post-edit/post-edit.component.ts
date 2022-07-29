@@ -41,7 +41,8 @@ export class PostEditComponent implements OnInit {
       }
   }
   updatePost() {
-    this.postService.updatePost(this.postId, this.editForm.value)
-    this.router.navigateByUrl('posts')
+    this.postService.updatePost(this.postId, this.editForm.value).subscribe({
+      complete: () => this.router.navigateByUrl('posts')
+    })
   }
 }

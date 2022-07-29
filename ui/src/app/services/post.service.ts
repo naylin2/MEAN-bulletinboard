@@ -20,11 +20,7 @@ export class PostService {
 
   updatePost(id: number, data:any) {
     let url = 'http://localhost:3000/posts/'+id;
-    this.httpClient.put(url, data).subscribe({
-      next: (v) => console.log(v),
-      error: (e) => console.error(e),
-      complete: () => console.info('complete')
-    })
+    return this.httpClient.put(url, data)
   }
 
   addPost(data: any) {

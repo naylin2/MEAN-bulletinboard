@@ -85,7 +85,7 @@ async function authenticate(req, res, next) {
         res.json(user);
       }
       else {
-        res.json({ message: "Username or password is incorrect"});
+        res.json({ message: "Password is incorrect"});
       }
     });
   }
