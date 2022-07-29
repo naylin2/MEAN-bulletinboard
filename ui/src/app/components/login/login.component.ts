@@ -39,12 +39,15 @@ export class LoginComponent implements OnInit {
       this.http.post(url, this.loginForm.value).subscribe({
         next: (data) => {
           if(data.hasOwnProperty("message")) this.err = JSON.parse(JSON.stringify(data)).message;
-          let user = JSON.stringify(data);
-          localStorage.setItem("user", user);
-          this.authService.isLoggedIn = true;
+          else {
+            this.err = ""
+            let user = JSON.stringify(data);
+            localStorage.setItem("user", user);
+            this.authService.isLoggedIn = true;
+          }
         },
         error: (e) => {
-          this.err = e;
+          // this.err = e;
           console.log(e);
         },
         complete: () => {
