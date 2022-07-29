@@ -14,9 +14,11 @@ export class UserListComponent implements OnInit {
     private router: Router
   ) { }
   users!: any;
+  user: any;
 
   ngOnInit(): void {
     this.getUsers();
+    this.user = localStorage.getItem("user");
   }
 
   getUsers() {

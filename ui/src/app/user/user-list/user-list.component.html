@@ -1,4 +1,4 @@
-<div class="user-table">
+<div class="user-table" *ngIf="user">
   <a routerLink="new" class="btn btn-secondary">New User</a>
   <table class="table table-hover">
     <thead>
@@ -25,4 +25,7 @@
       </tr>
     </tbody>
   </table>
+</div>
+<div *ngIf="!user">
+  You are not authorized to view this page!
 </div>
